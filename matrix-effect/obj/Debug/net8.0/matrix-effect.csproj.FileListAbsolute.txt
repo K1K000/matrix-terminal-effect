@@ -1,0 +1,15 @@
+C:\Users\blues\Desktop\gitshit\matrix-terminal-effect\matrix-effect\obj\Debug\net8.0\matrix-effect.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\blues\Desktop\gitshit\matrix-terminal-effect\matrix-effect\obj\Debug\net8.0\matrix-effect.AssemblyInfoInputs.cache
+C:\Users\blues\Desktop\gitshit\matrix-terminal-effect\matrix-effect\obj\Debug\net8.0\matrix-effect.AssemblyInfo.cs
+C:\Users\blues\Desktop\gitshit\matrix-terminal-effect\matrix-effect\obj\Debug\net8.0\matrix-effect.csproj.CoreCompileInputs.cache
+C:\Users\blues\Desktop\gitshit\matrix-terminal-effect\matrix-effect\obj\Debug\net8.0\matrix-effect.sourcelink.json
+C:\Users\blues\Desktop\gitshit\matrix-terminal-effect\matrix-effect\bin\Debug\net8.0\matrix-effect.exe
+C:\Users\blues\Desktop\gitshit\matrix-terminal-effect\matrix-effect\bin\Debug\net8.0\matrix-effect.deps.json
+C:\Users\blues\Desktop\gitshit\matrix-terminal-effect\matrix-effect\bin\Debug\net8.0\matrix-effect.runtimeconfig.json
+C:\Users\blues\Desktop\gitshit\matrix-terminal-effect\matrix-effect\bin\Debug\net8.0\matrix-effect.dll
+C:\Users\blues\Desktop\gitshit\matrix-terminal-effect\matrix-effect\bin\Debug\net8.0\matrix-effect.pdb
+C:\Users\blues\Desktop\gitshit\matrix-terminal-effect\matrix-effect\obj\Debug\net8.0\matrix-effect.dll
+C:\Users\blues\Desktop\gitshit\matrix-terminal-effect\matrix-effect\obj\Debug\net8.0\refint\matrix-effect.dll
+C:\Users\blues\Desktop\gitshit\matrix-terminal-effect\matrix-effect\obj\Debug\net8.0\matrix-effect.pdb
+C:\Users\blues\Desktop\gitshit\matrix-terminal-effect\matrix-effect\obj\Debug\net8.0\matrix-effect.genruntimeconfig.cache
+C:\Users\blues\Desktop\gitshit\matrix-terminal-effect\matrix-effect\obj\Debug\net8.0\ref\matrix-effect.dll
