@@ -1,11 +1,11 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
-// int height = Console.BufferHeight;
-int height = 40;
+int height = 20;
+// int height = ;
 int width = Console.BufferWidth;
-// int tail = 7;
+int tail = 7;
 // int gencut = 10;
-int amount = 10;
+int amount = 5;
 List<string> characters = ["1", "2", "3", "4",];
 List<string> colors = ["G", "B", "R", "P", "Y",];
 System.Console.WriteLine(width);
@@ -24,34 +24,90 @@ for (int i = 0; i < amount; i++) // the starting amount of snakes
     int x = rnd.Next(0,width);
     int c = rnd.Next(0,alt_c.Length-1);
     char character = colors[c][0];
-    table.Add(i,(y,x,character));
+    table.Add(i,(x,y,character));
 }
-System.Console.WriteLine(table[1]);
 
-Console.CursorVisible = false;
-Console.Clear();
-for (int i = 0; i < 400; i++)
+System.Console.CursorVisible = false;
+System.Console.Clear();
+for (int i = 0; i < 4000; i++)
 {
     foreach (var ite in table.ToArray())
     {       
-        int y = ite.Value.Item1;
-        int x = ite.Value.Item2;
+        int y = ite.Value.Item2;
+        int x = ite.Value.Item1;
         char c = ite.Value.Item3;
-        switch (ite.Value.Item3)
+        
+        switch (ite.Value.Item2 > height-1 && ite.Value.Item3 != 'E')
         {
-            case not 'E':
-                Console.SetCursorPosition(x, y);
-                System.Console.Write(c);
-                if (y < height-1)
-                {
-                    table.Remove(ite.Key);
-                    y++;
-                    table.Add(ite.Key,(y,x,c));
-                }
+            case true:
+                int yg = rnd.Next(0,height);
+                int xg = rnd.Next(0,width);
+                int cg = rnd.Next(0,alt_c.Length-1);
+                char character = colors[cg][0];
+                table.Remove(ite.Key);
+                table.Add(ite.Key,(xg,yg,character));
                 break;
             default:
                 break;
         }
+        switch (ite.Value.Item3 == 'E')
+        {
+            case true:
+                Console.SetCursorPosition(x, y);
+                System.Console.Write(' ');
+                if (y < height)
+                {
+                    table.Remove(ite.Key);
+                    y++;
+                    table.Add(ite.Key,(x,y,c));
+                }
+                break;
+            case false:
+                Console.SetCursorPosition(x, y);
+                System.Console.Write(c);
+                if (y < height)
+                {
+                    table.Remove(ite.Key);
+                    y++;
+                    table.Add(ite.Key,(x,y,c));
+                }
+                if (y > tail-1)
+                {
+                    Console.SetCursorPosition(x, y-tail);
+                    System.Console.Write(" ");
+                    
+                }
+                if (y > tail || table.ContainsKey(ite.Key+amount))
+                {
+                    table.Remove(ite.Key+amount);
+                    y = y - tail;
+                    table.Add(ite.Key+amount,(x,y,'E'));
+                }
+                break;
+            // case true:
+            //     Console.SetCursorPosition(x, y);
+            //     System.Console.Write(' ');
+            //     if (y < height)
+            //     {
+            //         table.Remove(ite.Key);
+            //         y++;
+            //         table.Add(ite.Key,(x,y,c));
+            //     }
+            //     break;
+            // case 'E':
+            //     Console.SetCursorPosition(x, y);
+            //     System.Console.Write(' ');
+            //     if (y < height)
+            //     {
+            //         table.Remove(ite.Key);
+            //         y++;
+            //         table.Add(ite.Key,(x,y,c));
+            //     }
+            //     break;
+        }
+        
     }
-    System.Threading.Thread.Sleep(50);
+
+    System.Threading.Thread.Sleep(40);
 }
+System.Console.WriteLine("you done goofed");

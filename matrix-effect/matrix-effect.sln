@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.002.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "matrix-effect", "matrix-effect.csproj", "{2F68117C-290C-429D-96EC-4F3AD7E014DA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2F68117C-290C-429D-96EC-4F3AD7E014DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F68117C-290C-429D-96EC-4F3AD7E014DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F68117C-290C-429D-96EC-4F3AD7E014DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F68117C-290C-429D-96EC-4F3AD7E014DA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4A09FAE8-1581-40B4-A892-323EB5C6C86C}
+	EndGlobalSection
+EndGlobal
