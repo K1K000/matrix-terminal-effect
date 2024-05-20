@@ -53,7 +53,7 @@ for (int i = 0; i < 4000; i++)
         switch (ite.Value.Item3 == 'E')
         {
             case true:
-                Console.SetCursorPosition(x, y);
+                Console.SetCursorPosition(x, y); // bugged for E becomes - idk why
                 System.Console.Write(' ');
                 if (y < height)
                 {
