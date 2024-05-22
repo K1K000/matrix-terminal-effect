@@ -11,9 +11,7 @@ List<string> colors = ["G", "B", "R", "P", "Y",];
 System.Console.WriteLine(width);
 
 Dictionary<int, (int, int, char)> table = new Dictionary<int, (int, int, char)>{};
-// myDictionary[1] = (currentValue.Item1 + 1, currentValue.Item2, currentValue.Item3);
 
-// myDictionary.Add(1, (10, 20, 'A'));
 Random rnd = new Random();
 string[] alt_c = colors.ToArray(); // colors to array for easy lenght
 
@@ -29,7 +27,7 @@ for (int i = 0; i < amount; i++) // the starting amount of snakes
 
 System.Console.CursorVisible = false;
 System.Console.Clear();
-for (int i = 0; i < 40000; i++)
+for (int i = 0; i < 400000; i++)
 {
     foreach (var ite in table.ToArray())
     {       
@@ -74,7 +72,7 @@ for (int i = 0; i < 40000; i++)
             table.Add(ite.Key,(xg,yg,character));
         }
     }
-    System.Threading.Thread.Sleep(100);
+    System.Threading.Thread.Sleep(1);
 
 }
 System.Console.WriteLine("you done goofed");
