@@ -37,18 +37,28 @@ for (int i = 0; i < 4000; i++)
         int x = ite.Value.Item1;
         char c = ite.Value.Item3;
         
-        switch (ite.Value.Item2 > height-1 && ite.Value.Item3 != 'E')
+        // // switch (ite.Value.Item2 > height-1 && ite.Value.Item3 != 'E')
+        // // {
+        // //     case true:
+        // //         int yg = rnd.Next(0,height);
+        // //         int xg = rnd.Next(0,width);
+        // //         int cg = rnd.Next(0,alt_c.Length-1);
+        // //         char character = colors[cg][0];
+        // //         table.Remove(ite.Key);
+        // //         table.Add(ite.Key,(xg,yg,character));
+        // //         break;
+        // //     default:
+        // //         break;
+        // }
+
+        if(ite.Value.Item2 > height-1 && ite.Value.Item3 != 'E')
         {
-            case true:
-                int yg = rnd.Next(0,height);
-                int xg = rnd.Next(0,width);
-                int cg = rnd.Next(0,alt_c.Length-1);
-                char character = colors[cg][0];
-                table.Remove(ite.Key);
-                table.Add(ite.Key,(xg,yg,character));
-                break;
-            default:
-                break;
+            int yg = rnd.Next(0,height);
+            int xg = rnd.Next(0,width);
+            int cg = rnd.Next(0,alt_c.Length-1);
+            char character = colors[cg][0];
+            table.Remove(ite.Key);
+            table.Add(ite.Key,(xg,yg,character));
         }
         switch (ite.Value.Item3 == 'E')
         {
@@ -77,7 +87,7 @@ for (int i = 0; i < 4000; i++)
                     System.Console.Write(" ");
                     
                 }
-                if (y > tail || table.ContainsKey(ite.Key+amount))
+                if (y > tail && table.ContainsKey(ite.Key+amount))
                 {
                     table.Remove(ite.Key+amount);
                     y = y - tail;

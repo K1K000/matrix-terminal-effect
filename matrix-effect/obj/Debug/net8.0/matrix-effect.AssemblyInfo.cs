@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("matrix-effect")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+cfcc09a2a3ce52eaba38abbae628c5488295fe22")]
 [assembly: System.Reflection.AssemblyProductAttribute("matrix-effect")]
 [assembly: System.Reflection.AssemblyTitleAttribute("matrix-effect")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
