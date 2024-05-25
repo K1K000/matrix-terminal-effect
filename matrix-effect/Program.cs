@@ -1,13 +1,92 @@
 ﻿// See https://aka.ms/new-console-template for more information
+using System.ComponentModel;
+using System.Text;
 
-int height = 29;
-// int height = ;
-int width = Console.BufferWidth;
+static void chcol(bool yah, char c){
+if (yah == false)
+    {
+        switch (c)
+        {
+            case 'R':
+                Console.ForegroundColor = ConsoleColor.Red;
+                break;
+            case 'G':
+                Console.ForegroundColor = ConsoleColor.DarkGreen;
+                break;
+            case 'B':
+                Console.ForegroundColor = ConsoleColor.Blue;
+                break;
+            case 'M':
+                Console.ForegroundColor = ConsoleColor.Magenta;
+                break;
+            case 'Y':
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                break;
+            case 'C':
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                break;
+            case 'F':
+                Console.ForegroundColor = ConsoleColor.DarkCyan;
+                break;
+            case 'N':
+                Console.ForegroundColor = ConsoleColor.DarkMagenta;
+                break;
+
+            default:
+                break;
+        }    
+    }
+else 
+{
+
+    Random rnd = new Random();
+    int numo = rnd.Next(0,7);
+    switch (numo)
+        {
+            case 0:
+                Console.ForegroundColor = ConsoleColor.Red;
+                break;
+            case 1:
+                Console.ForegroundColor = ConsoleColor.DarkGreen;
+                break;
+            case 2:
+                Console.ForegroundColor = ConsoleColor.Blue;
+                break;
+            case 3:
+                Console.ForegroundColor = ConsoleColor.Magenta;
+                break;
+            case 4:
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                break;
+            case 5:
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                break;
+            case 6:
+                Console.ForegroundColor = ConsoleColor.DarkCyan;
+                break;
+            case 7:
+                Console.ForegroundColor = ConsoleColor.DarkMagenta;
+                break;
+
+            default:
+                break;
+        } 
+}
+}
+
+
+bool rndcol = true;
+Console.OutputEncoding = Encoding.UTF8;
+
+int height = Console.WindowHeight-1;
+int width = Console.WindowWidth;
 int tail = 7;
-// int gencut = 10;
-int amount = 10;
-List<string> characters = ["1", "2", "3", "4",];
-List<string> colors = ["G", "B", "R", "P", "Y",];
+int amount = 100;
+// List<string> characters = ["1", "2", "3", "4","5","6","7"];
+// List<string> characters = ["Bitch"];
+List<string> characters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M","N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+// List<string> characters = ["ア", "イ", "ウ", "エ","オ","カ"];
+List<string> colors = ["G", "B", "R", "M", "Y","C","F","N"];
 System.Console.WriteLine(width);
 
 Dictionary<int, (int, int, char)> table = new Dictionary<int, (int, int, char)>{};
@@ -39,7 +118,10 @@ for (int i = 0; i < 400000; i++)
             Console.SetCursorPosition(x, y-tail);
             System.Console.Write(" ");
             Console.SetCursorPosition(x, y);
-            System.Console.Write(c);
+            chcol(rndcol, c); 
+            // rndchar(true, characters);
+            string chara = characters[rnd.Next(0,characters.Count)];
+            System.Console.Write(chara);
             table.Remove(ite.Key);
             y++;
             table.Add(ite.Key,(x,y,c));
@@ -47,7 +129,11 @@ for (int i = 0; i < 400000; i++)
         else if (y < tail)
         {
             Console.SetCursorPosition(x, y);
-            System.Console.Write(c);
+            // Console.ForegroundColor = ConsoleColor.Red;
+            chcol(rndcol, c); 
+            // rndchar(true, characters);
+            string chara = characters[rnd.Next(0,characters.Count)];
+            System.Console.Write(chara);
             table.Remove(ite.Key);
             y++;
             table.Add(ite.Key,(x,y,c));
@@ -72,7 +158,7 @@ for (int i = 0; i < 400000; i++)
             table.Add(ite.Key,(xg,yg,character));
         }
     }
-    System.Threading.Thread.Sleep(100);
+    System.Threading.Thread.Sleep(20);
 
 }
 System.Console.WriteLine("you done goofed");
