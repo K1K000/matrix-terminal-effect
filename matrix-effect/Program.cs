@@ -79,7 +79,7 @@ static void program(List<string> characters,List<string> colors, bool rndcol, in
     Dictionary<int, (int, int, char)> table = new Dictionary<int, (int, int, char)>{};
 
     int height = Console.WindowHeight-1;
-    int width = Console.WindowWidth;
+    int width = Console.WindowWidth-1;
 
     System.Console.CursorVisible = false;
     System.Console.Clear();
