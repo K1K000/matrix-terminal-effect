@@ -3,7 +3,7 @@ using System.ComponentModel;
 using System.Text;
 
 static void chcol(bool yah, char c){
-if (yah == false)
+    if (yah == false)
     {
         switch (c)
         {
@@ -74,91 +74,231 @@ else
 }
 }
 
+static void program(List<string> characters,List<string> colors, bool rndcol, int itcount, int tail, int amount)
+{
+    Dictionary<int, (int, int, char)> table = new Dictionary<int, (int, int, char)>{};
+
+    int height = Console.WindowHeight-1;
+    int width = Console.WindowWidth;
+
+    System.Console.CursorVisible = false;
+    System.Console.Clear();
+    Random rnd = new Random();
+    string[] alt_c = colors.ToArray(); // colors to array for easy lenght
+
+
+    for (int i = 0; i < amount; i++) // the starting amount of snakes
+    {
+        int y = rnd.Next(0,height-tail);
+        int x = rnd.Next(0,width);
+        int c = rnd.Next(0,alt_c.Length-1);
+        char character = colors[c][0];
+        table.Add(i,(x,y,character));
+    }
+    for (int i = 0; i < itcount; i++)
+    {
+        foreach (var ite in table.ToArray())
+        {       
+            int y = ite.Value.Item2;
+            int x = ite.Value.Item1;
+            char c = ite.Value.Item3;
+            if (y >= tail && y <= height)
+            {
+                Console.SetCursorPosition(x, y-tail);
+                System.Console.Write(" ");
+                Console.SetCursorPosition(x, y);
+                // chcol(rndcol, c); 
+                switch (c)
+                {
+                    case 'R':
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        break;
+                    case 'G':
+                        Console.ForegroundColor = ConsoleColor.DarkGreen;
+                        break;
+                    case 'B':
+                        Console.ForegroundColor = ConsoleColor.Blue;
+                        break;
+                    case 'M':
+                        Console.ForegroundColor = ConsoleColor.Magenta;
+                        break;
+                    case 'Y':
+                        Console.ForegroundColor = ConsoleColor.Yellow;
+                        break;
+                    case 'C':
+                        Console.ForegroundColor = ConsoleColor.Cyan;
+                        break;
+                    case 'F':
+                        Console.ForegroundColor = ConsoleColor.DarkCyan;
+                        break;
+                    case 'N':
+                        Console.ForegroundColor = ConsoleColor.DarkMagenta;
+                        break;
+
+                    default:
+                        break;
+                }
+                // rndchar(true, characters);
+                string chara = characters[rnd.Next(0,characters.Count)];
+                System.Console.Write(chara);
+                // System.Console.Write(c);
+                table.Remove(ite.Key);
+                y++;
+                table.Add(ite.Key,(x,y,c));
+            }
+            else if (y < tail)
+            {
+                Console.SetCursorPosition(x, y);
+                // Console.ForegroundColor = ConsoleColor.Red;
+                // chcol(rndcol, c); 
+                switch (c)
+                {
+                    case 'R':
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        break;
+                    case 'G':
+                        Console.ForegroundColor = ConsoleColor.DarkGreen;
+                        break;
+                    case 'B':
+                        Console.ForegroundColor = ConsoleColor.Blue;
+                        break;
+                    case 'M':
+                        Console.ForegroundColor = ConsoleColor.Magenta;
+                        break;
+                    case 'Y':
+                        Console.ForegroundColor = ConsoleColor.Yellow;
+                        break;
+                    case 'C':
+                        Console.ForegroundColor = ConsoleColor.Cyan;
+                        break;
+                    case 'F':
+                        Console.ForegroundColor = ConsoleColor.DarkCyan;
+                        break;
+                    case 'N':
+                        Console.ForegroundColor = ConsoleColor.DarkMagenta;
+                        break;
+
+                    default:
+                        break;
+                }
+                // rndchar(true, characters);
+                string chara = characters[rnd.Next(0,characters.Count)];
+                System.Console.Write(chara);
+                // System.Console.Write(c);
+                table.Remove(ite.Key);
+                y++;
+                table.Add(ite.Key,(x,y,c));
+            }
+            else if (y > height && y < height + tail)
+            {
+                Console.SetCursorPosition(x, y-tail);
+                System.Console.Write(" ");
+                table.Remove(ite.Key);
+                y++;
+                table.Add(ite.Key,(x,y,c));
+            }
+            else if(y >= height + tail)
+            {
+                Console.SetCursorPosition(x, y-tail);
+                System.Console.Write(" ");
+                int yg = rnd.Next(0,height-tail);
+                int xg = rnd.Next(0,width);
+                int cg = rnd.Next(0,alt_c.Length-1);
+                char character = colors[cg][0];
+                table.Remove(ite.Key);
+                table.Add(ite.Key,(xg,yg,character));
+            }
+        }
+        System.Threading.Thread.Sleep(100);
+
+    }
+}
+
 
 bool rndcol = true;
 Console.OutputEncoding = Encoding.UTF8;
 
 int height = Console.WindowHeight-1;
-int width = Console.WindowWidth;
+int width = Console.WindowWidth-1;
 int tail = 7;
-int amount = 100;
+int amount = 10;
 // List<string> characters = ["1", "2", "3", "4","5","6","7"];
 // List<string> characters = ["Bitch"];
-List<string> characters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M","N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
-// List<string> characters = ["ア", "イ", "ウ", "エ","オ","カ"];
+// List<string> characters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M","N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+List<string> characters = ["ア", "イ", "ウ", "エ","オ","カ"];
 List<string> colors = ["G", "B", "R", "M", "Y","C","F","N"];
-System.Console.WriteLine(width);
+// List<string> colors = ["G"];
+program(characters,colors,rndcol,30000,tail,amount);
+// Dictionary<int, (int, int, char)> table = new Dictionary<int, (int, int, char)>{};
 
-Dictionary<int, (int, int, char)> table = new Dictionary<int, (int, int, char)>{};
-
-Random rnd = new Random();
-string[] alt_c = colors.ToArray(); // colors to array for easy lenght
+// Random rnd = new Random();
+// string[] alt_c = colors.ToArray(); // colors to array for easy lenght
 
 
-for (int i = 0; i < amount; i++) // the starting amount of snakes
-{
-    int y = rnd.Next(0,height-tail);
-    int x = rnd.Next(0,width);
-    int c = rnd.Next(0,alt_c.Length-1);
-    char character = colors[c][0];
-    table.Add(i,(x,y,character));
-}
+// for (int i = 0; i < amount; i++) // the starting amount of snakes
+// {
+//     int y = rnd.Next(0,height-tail);
+//     int x = rnd.Next(0,width);
+//     int c = rnd.Next(0,alt_c.Length-1);
+//     char character = colors[c][0];
+//     table.Add(i,(x,y,character));
+// }
 
-System.Console.CursorVisible = false;
-System.Console.Clear();
-for (int i = 0; i < 400000; i++)
-{
-    foreach (var ite in table.ToArray())
-    {       
-        int y = ite.Value.Item2;
-        int x = ite.Value.Item1;
-        char c = ite.Value.Item3;
-        if (y >= tail && y <= height)
-        {
-            Console.SetCursorPosition(x, y-tail);
-            System.Console.Write(" ");
-            Console.SetCursorPosition(x, y);
-            chcol(rndcol, c); 
-            // rndchar(true, characters);
-            string chara = characters[rnd.Next(0,characters.Count)];
-            System.Console.Write(chara);
-            table.Remove(ite.Key);
-            y++;
-            table.Add(ite.Key,(x,y,c));
-        }
-        else if (y < tail)
-        {
-            Console.SetCursorPosition(x, y);
-            // Console.ForegroundColor = ConsoleColor.Red;
-            chcol(rndcol, c); 
-            // rndchar(true, characters);
-            string chara = characters[rnd.Next(0,characters.Count)];
-            System.Console.Write(chara);
-            table.Remove(ite.Key);
-            y++;
-            table.Add(ite.Key,(x,y,c));
-        }
-        else if (y > height && y < height + tail)
-        {
-            Console.SetCursorPosition(x, y-tail);
-            System.Console.Write(" ");
-            table.Remove(ite.Key);
-            y++;
-            table.Add(ite.Key,(x,y,c));
-        }
-        else if(y >= height + tail)
-        {
-            Console.SetCursorPosition(x, y-tail);
-            System.Console.Write(" ");
-            int yg = rnd.Next(0,height-tail);
-            int xg = rnd.Next(0,width);
-            int cg = rnd.Next(0,alt_c.Length-1);
-            char character = colors[cg][0];
-            table.Remove(ite.Key);
-            table.Add(ite.Key,(xg,yg,character));
-        }
-    }
-    System.Threading.Thread.Sleep(20);
+// System.Console.CursorVisible = false;
+// System.Console.Clear();
+// for (int i = 0; i < 400000; i++)
+// {
+//     foreach (var ite in table.ToArray())
+//     {       
+//         int y = ite.Value.Item2;
+//         int x = ite.Value.Item1;
+//         char c = ite.Value.Item3;
+//         if (y >= tail && y <= height)
+//         {
+//             Console.SetCursorPosition(x, y-tail);
+//             System.Console.Write(" ");
+//             Console.SetCursorPosition(x, y);
+//             chcol(rndcol, c); 
+//             // rndchar(true, characters);
+//             string chara = characters[rnd.Next(0,characters.Count)];
+//             System.Console.Write(chara);
+//             table.Remove(ite.Key);
+//             y++;
+//             table.Add(ite.Key,(x,y,c));
+//         }
+//         else if (y < tail)
+//         {
+//             Console.SetCursorPosition(x, y);
+//             // Console.ForegroundColor = ConsoleColor.Red;
+//             chcol(rndcol, c); 
+//             // rndchar(true, characters);
+//             string chara = characters[rnd.Next(0,characters.Count)];
+//             System.Console.Write(chara);
+//             table.Remove(ite.Key);
+//             y++;
+//             table.Add(ite.Key,(x,y,c));
+//         }
+//         else if (y > height && y < height + tail)
+//         {
+//             Console.SetCursorPosition(x, y-tail);
+//             System.Console.Write(" ");
+//             table.Remove(ite.Key);
+//             y++;
+//             table.Add(ite.Key,(x,y,c));
+//         }
+//         else if(y >= height + tail)
+//         {
+//             Console.SetCursorPosition(x, y-tail);
+//             System.Console.Write(" ");
+//             int yg = rnd.Next(0,height-tail);
+//             int xg = rnd.Next(0,width);
+//             int cg = rnd.Next(0,alt_c.Length-1);
+//             char character = colors[cg][0];
+//             table.Remove(ite.Key);
+//             table.Add(ite.Key,(xg,yg,character));
+//         }
+//     }
+//     System.Threading.Thread.Sleep(20);
 
-}
+// }
 System.Console.WriteLine("you done goofed");
