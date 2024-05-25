@@ -72,7 +72,7 @@ for (int i = 0; i < 400000; i++)
             table.Add(ite.Key,(xg,yg,character));
         }
     }
-    System.Threading.Thread.Sleep(1);
+    System.Threading.Thread.Sleep(100);
 
 }
 System.Console.WriteLine("you done goofed");
